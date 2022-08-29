@@ -4,7 +4,8 @@ import {tns} from "tiny-slider";
 import {modalsInit} from "./modules/modals";
 import feedbackFormInit from "./modules/feedbackForm";
 
-const feedbacksUrl = "http://localhost:9999";
+const serverUrl = "http://localhost:9999";
+const feedbacksUrl = `${serverUrl}/feedbacks`;
 
 window.addEventListener("DOMContentLoaded", () => {
   // slider
@@ -28,5 +29,6 @@ window.addEventListener("DOMContentLoaded", () => {
   modalsInit(".button.button-order.button-consultation", ".popup-consultation");
 
   // feedback forms
+  feedbackFormInit(".popup-design form", feedbacksUrl);
   feedbackFormInit(".popup-consultation form", feedbacksUrl);
 })

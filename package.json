@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "start": "concurrently \"cd backend && npm run serve\" \"cd frontend && gulp\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.3.0"
+  }
+}

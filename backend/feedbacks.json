@@ -1,0 +1,9 @@
+{
+  "feedbacks": [
+    {
+      "id": 1,
+      "name": "Петр",
+      "test-data": "some data"
+    }
+  ]
+}
