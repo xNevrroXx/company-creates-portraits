@@ -38,7 +38,7 @@ const routes = (app) => {
 
     const bodyData = {...request.body};
     bodyData.id = uuid.v1();
-    if(file) {
+    if(Object.keys(file).length > 0) {
       bodyData.image = {
         filename: file.filename,
         destination: file.destination

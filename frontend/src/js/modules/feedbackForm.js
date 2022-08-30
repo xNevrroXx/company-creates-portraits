@@ -1,5 +1,8 @@
+import maskPhone from "./validation";
+
 function feedbackFormInit(formSelector, url) {
   const formEl = document.querySelector(formSelector);
+  maskPhone(`${formSelector} input[name="phone"]`);
 
   formEl.addEventListener("submit", function (event) {
     event.preventDefault();
