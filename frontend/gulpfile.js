@@ -3,6 +3,7 @@
 const gulp = require("gulp");
 const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
+const less = require("gulp-less");
 
 const dist = "./dist/";
 
@@ -50,6 +51,12 @@ gulp.task("copy-assets", () => {
                 .on("end", browsersync.reload);
 });
 
+// gulp.task("build-css", () => {
+//   return gulp.src("./src/assets/**/*.less")
+//     .pipe(less())
+//     .pipe(gulp.dest("./src/assets/css/main2.css"));
+// })
+
 gulp.task("watch", () => {
     browsersync.init({
 		server: "./dist/",
@@ -59,10 +66,11 @@ gulp.task("watch", () => {
     
     gulp.watch("./src/index.html", gulp.parallel("copy-html"));
     gulp.watch("./src/assets/**/*.*", gulp.parallel("copy-assets"));
+    // gulp.watch("./src/assets/**/*.less", gulp.parallel("build-css"));
     gulp.watch("./src/js/**/*.js", gulp.parallel("build-js"));
 });
 
-gulp.task("build", gulp.parallel("copy-html", "copy-assets", "build-js"));
+gulp.task("build", gulp.parallel("copy-html", "copy-assets", "build-js", "build-css"));
 
 gulp.task("build-prod-js", () => {
     return gulp.src("./src/js/main.js")

@@ -27,8 +27,17 @@ window.addEventListener("DOMContentLoaded", () => {
   // modals
   modalsInit(".button.button-order.button-design", ".popup-design");
   modalsInit(".button.button-order.button-consultation", ".popup-consultation");
+  modalsInit(".fixed-gift", ".popup-gift", "block", () => {
+    document.querySelector(".fixed-gift").remove();
+  })
 
   // feedback forms
-  feedbackFormInit(".popup-design form", feedbacksUrl);
-  feedbackFormInit(".popup-consultation form", feedbacksUrl);
+  feedbackFormInit(".popup-design form", feedbacksUrl, () => {
+    const clickEvent = new CustomEvent("closeModal");
+    document.querySelector(".popup-design").dispatchEvent(clickEvent);
+  });
+  feedbackFormInit(".popup-consultation form", feedbacksUrl, () => {
+    const clickEvent = new CustomEvent("closeModal");
+    document.querySelector(".popup-consultation").dispatchEvent(clickEvent);
+  });
 })

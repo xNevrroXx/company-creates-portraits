@@ -45,7 +45,6 @@ const routes = (app) => {
       };
     }
 
-    response.json({file: file, body: bodyData});
     readFileAsync(feedbacksJsonPath)
       .then(data => {
         return new Promise(resolve => {

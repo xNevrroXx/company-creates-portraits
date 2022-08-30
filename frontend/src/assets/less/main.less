@@ -94,7 +94,7 @@ h1, h2, h3, h4 {
 	.CirceExtraBold();
 }
 .p15 {
-	font-size: 1.5;
+	font-size: 1.5rem;
 }
 .p-heading {
 	font-size: 2.2rem;
@@ -1107,35 +1107,47 @@ h1, h2, h3, h4 {
 	}
 }
 .popup {
-		&-gift {
-			z-index: 20;
-			position: fixed;
-			display: none;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			width: 100%;
-			height: 100%;
-			background-color: rgba(178, 80, 188, 0.8);
-			h2 {
-				padding-bottom: 2rem;
-			}
-			img {
-				display: block;
-				margin: 0 auto;
-			}
-			p {
-				margin-top: 2rem;
-			}
+	&-status {
+		z-index: 20;
+		position: fixed;
+		display: none;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(178, 80, 188, 0.8);
+	}
+	&-gift {
+		z-index: 20;
+		position: fixed;
+		display: none;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(178, 80, 188, 0.8);
+		h2 {
+			padding-bottom: 2rem;
 		}
+		img {
+			display: block;
+			margin: 0 auto;
+		}
+		p {
+			margin-top: 2rem;
+		}
+	}
 	&-close {
 		position: absolute;
 		top: -5rem;
 		right: -1.5rem;
 		font-size: 5rem;
 		width: 5rem;
-	 height: 5rem;
+	 	height: 5rem;
 		line-height: 5rem;
 		text-align: center;
 		background: transparent;
@@ -1680,7 +1692,6 @@ h1, h2, h3, h4 {
 		}
 		.main {
 			&-features {
-				max-width: auto;
 				margin-left: 20%;
 			}
 			&-slider-btn {
