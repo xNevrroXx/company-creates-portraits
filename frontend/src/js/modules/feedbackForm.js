@@ -1,12 +1,13 @@
-import maskPhone from "./validation";
+import maskPhone from "./maskPhone";
 import {activateModal} from "./modals";
 import validate from "./validate";
-import {errors} from "browser-sync/dist/config";
 
 function feedbackFormInit(formSelector, url, additionalFunctionOnSend = () => {}) {
   const formEl = document.querySelector(formSelector);
 
-  maskPhone(`${formSelector} input[name="phone"]`);
+  if(formEl.querySelector(`input[name="phone"]`)) {
+    maskPhone(`${formSelector} input[name="phone"]`);
+  }
 
   formEl.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -19,7 +20,7 @@ function feedbackFormInit(formSelector, url, additionalFunctionOnSend = () => {}
     const errors = validate(formSelector);
     if(errors) {
       // todo show errors of validation to user
-
+      console.log(errors);
     }
     else {
       additionalFunctionOnSend();
@@ -27,11 +28,14 @@ function feedbackFormInit(formSelector, url, additionalFunctionOnSend = () => {}
         .then(response => response.text())
         .then(data => {
           console.log(data);
+          // notification of the form sending status
           changeContent(".popup-status h3", `Свяжемся с Вами в ближайшее время`);
           activateModal(".popup-status");
+          formEl.reset();
         })
         .catch(error => {
           console.log(error);
+          // notification of the form sending status
           changeContent(".popup-status h3", `Что-то пошло не так -<br> можете попробовать еще раз позже`);
           activateModal(".popup-status");
         });

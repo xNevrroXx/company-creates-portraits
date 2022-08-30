@@ -1,4 +1,9 @@
 function validate(formSelector) {
+  // validate this fields only. PSEUDO_CODE: {
+  //   fileInputNames: ["upload"],
+  //   inputNames: ["name", "email", "phone", "message"],
+  //   selectNames: ["size", "material", "options"]
+  // }
   const errors = {};
 
   const messageTextArea = document.querySelector(`${formSelector} textarea[name="message"]`);
@@ -34,11 +39,34 @@ function validate(formSelector) {
           errors.email = "Неверный формат email-адреса";
         }
         break;
+      case "promocode":
+        if(inputEl.value && inputEl.value !== "IWANTPOPART") {
+          errors.promocode = "Такого промокода нет";
+        }
+        break;
       default:
         throw new Error(`Something went wrong. Input name ${inputEl.name}`);
       }
     })
-
+  document.querySelectorAll(`${formSelector} select`).forEach(selectEl => {
+    switch (selectEl.name) {
+      case "size":
+        if(selectEl.value === "") {
+          errors.size = "Обязательное поле";
+        }
+        break;
+      case "material":
+        if(selectEl.value === "") {
+          errors.material = "Обязательное поле";
+        }
+        break;
+      case "options":
+        // необязательно поле для ввода
+        break;
+      default:
+        throw new Error(`Something went wrong. Select name ${selectEl.name}`);
+    }
+  })
 
   if(Object.keys(errors).length === 0)
     return null;

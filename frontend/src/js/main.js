@@ -4,9 +4,11 @@ import {tns} from "tiny-slider";
 import {modalsInit} from "./modules/modals";
 import feedbackFormInit from "./modules/feedbackForm";
 import showMoreTypesOnClick from "./modules/showMoreTypesOnClick";
+import calcCostPortrait from "./modules/calcCostPortrait";
 
 const serverUrl = "http://localhost:9999";
 const feedbacksUrl = `${serverUrl}/feedbacks`;
+const promocodeStr = 'IWANTPOPART'
 
 window.addEventListener("DOMContentLoaded", () => {
   // slider
@@ -32,6 +34,9 @@ window.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".fixed-gift").remove();
   })
 
+  // init calc area
+  calcCostPortrait("section.calc form", promocodeStr);
+
   // feedback forms
   feedbackFormInit(".popup-design form", feedbacksUrl, () => {
     const clickEvent = new CustomEvent("closeModal");
@@ -41,6 +46,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const clickEvent = new CustomEvent("closeModal");
     document.querySelector(".popup-consultation").dispatchEvent(clickEvent);
   });
+  feedbackFormInit("section.calc form", feedbacksUrl);
 
   // show more types of style portraits
   showMoreTypesOnClick(".styles#styles button", ".styles#styles div.hidden-lg.hidden-md.hidden-sm.hidden-xs.styles-2", "col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1");
