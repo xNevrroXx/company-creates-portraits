@@ -19,7 +19,7 @@ function feedbackFormInit(formSelector, url, additionalFunctionOnSend = () => {}
     const errors = validate(formSelector);
     if(errors) {
       // todo show errors of validation to user
-      console.log(errors)
+
     }
     else {
       additionalFunctionOnSend();
@@ -32,7 +32,7 @@ function feedbackFormInit(formSelector, url, additionalFunctionOnSend = () => {}
         })
         .catch(error => {
           console.log(error);
-          changeContent(".popup-status h3", `Свяжемся с Вами в ближайшее время`);
+          changeContent(".popup-status h3", `Что-то пошло не так -<br> можете попробовать еще раз позже`);
           activateModal(".popup-status");
         });
     }

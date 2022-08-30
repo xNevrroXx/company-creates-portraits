@@ -2,7 +2,10 @@ function validate(formSelector) {
   const errors = {};
 
   const messageTextArea = document.querySelector(`${formSelector} textarea[name="message"]`);
-  if(/^[а-яё\d \-;,.@'")(]{,300}$/gim.test(messageTextArea.value.trim()) === false) {
+  if(
+    messageTextArea
+    && messageTextArea.value !== 0
+    && /^[а-яё\d \-;,.@'")(]{0,300}$/gim.test(messageTextArea.value.trim()) === false) {
     errors.message = "Менее 300 русских символов, а также -;,.@'\")(";
   }
 
