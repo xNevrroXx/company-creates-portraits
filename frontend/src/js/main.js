@@ -29,6 +29,20 @@ window.addEventListener("DOMContentLoaded", () => {
     gutter: 300
   })
 
+  const feedbackSlider = tns({
+    container: ".feedback .feedback-slider",
+    nav: false,
+    prevButton: document.querySelector("button.main-slider-btn.main-prev-btn"),
+    nextButton: document.querySelector("button.main-slider-btn.main-next-btn"),
+    axis: "horizontal",
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplayButton: false,
+    autoplayButtonOutput: false,
+    speed: 1500,
+    gutter: 300
+  })
+
   // modals
   modalsInit(".button.button-order.button-design", ".popup-design");
   modalsInit(".button.button-order.button-consultation", ".popup-consultation");

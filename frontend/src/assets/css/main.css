@@ -845,6 +845,7 @@ h4 {
 .feedback {
   background-color: #f7e7e6;
   padding: 9rem 0;
+  position: relative;
 }
 .feedback-slider-item {
   padding-bottom: 5rem;
