@@ -7,10 +7,11 @@ import showMoreTypesOnClick from "./modules/showMoreTypesOnClick";
 import calcCostPortrait from "./modules/calcCostPortrait";
 import tabs from "./modules/tabs";
 import changeImageOnHover from "./modules/changeImageOnHover";
+import accordion from "./modules/accordion";
 
 const serverUrl = "http://localhost:9999";
 const feedbacksUrl = `${serverUrl}/feedbacks`;
-const promocodeStr = 'IWANTPOPART';
+const promocodeStr = "IWANTPOPART";
 
 window.addEventListener("DOMContentLoaded", () => {
   // slider
@@ -36,7 +37,7 @@ window.addEventListener("DOMContentLoaded", () => {
     nextButton: document.querySelector("button.main-slider-btn.main-next-btn"),
     axis: "horizontal",
     autoplay: true,
-    autoplayTimeout: 5000,
+    autoplayTimeout: 7500,
     autoplayButton: false,
     autoplayButtonOutput: false,
     speed: 1500,
@@ -75,42 +76,92 @@ window.addEventListener("DOMContentLoaded", () => {
     matchSlices: [
       {
         name: "all",
+        triggerTag: "li",
+        contentTag: "div",
         trigger: "ul.portfolio-menu > li.all",
-        content: ".portfolio-wrapper > .portfolio-block.all.all"
+        content: ".portfolio-wrapper > .portfolio-block.all"
       },
       {
         name: "lovers",
+        triggerTag: "li",
+        contentTag: "div",
         trigger: "ul.portfolio-menu > li.lovers",
         content: ".portfolio-wrapper > .portfolio-block.all.lovers"
       },
       {
         name: "chef",
+        triggerTag: "li",
+        contentTag: "div",
         trigger: "ul.portfolio-menu > li.chef",
         content: ".portfolio-wrapper > .portfolio-block.all.chef"
       },
       {
         name: "girl",
+        triggerTag: "li",
+        contentTag: "div",
         trigger: "ul.portfolio-menu > li.girl",
         content: ".portfolio-wrapper > .portfolio-block.all.girl"
       },
       {
         name: "guy",
+        triggerTag: "li",
+        contentTag: "div",
         trigger: "ul.portfolio-menu > li.guy",
         content: ".portfolio-wrapper > .portfolio-block.all.guy"
       },
       {
         name: "grandmother",
+        triggerTag: "li",
+        contentTag: "div",
         trigger: "ul.portfolio-menu > li.grandmother",
         content: ".portfolio-wrapper > .portfolio-block.all.grandmother"
       },
       {
         name: "granddad",
+        triggerTag: "li",
+        contentTag: "div",
         trigger: "ul.portfolio-menu > li.granddad",
         content: ".portfolio-wrapper > .portfolio-block.all.granddad"
       }
     ]
   };
   tabs("section.portfolio", triggerContentMatchObj, 0);
+  // accordion via tabs function === bad idea
+  const triggerContentMatchObj2 = {
+    wrapperTriggersSelector: "#accordion",
+    wrapperContentSelector: "#accordion",
+    matchSlices: [
+      {
+        name: "first-question",
+        triggerTag: "p",
+        contentTag: "div",
+        trigger: "p.accordion-heading.first-question",
+        content: "div.accordion-block.first-question"
+      },
+      {
+        name: "second-question",
+        triggerTag: "p",
+        contentTag: "div",
+        trigger: "p.accordion-heading.second-question",
+        content: "div.accordion-block.second-question"
+      },
+      {
+        name: "third-question",
+        triggerTag: "p",
+        contentTag: "div",
+        trigger: "p.accordion-heading.third-question",
+        content: "div.accordion-block.third-question"
+      },
+      {
+        name: "fourth-question",
+        triggerTag: "p",
+        contentTag: "div",
+        trigger: "p.accordion-heading.fourth-question",
+        content: "div.accordion-block.fourth-question"
+      },
+    ]
+  };
+  tabs("section.often-questions", triggerContentMatchObj2, 0, "active", "hidden");
 
   // other
   const imagesMatchArr = [
