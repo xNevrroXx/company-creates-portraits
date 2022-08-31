@@ -6,6 +6,7 @@ import feedbackFormInit from "./modules/feedbackForm";
 import showMoreTypesOnClick from "./modules/showMoreTypesOnClick";
 import calcCostPortrait from "./modules/calcCostPortrait";
 import tabs from "./modules/tabs";
+import changeImageOnHover from "./modules/changeImageOnHover";
 
 const serverUrl = "http://localhost:9999";
 const feedbacksUrl = `${serverUrl}/feedbacks`;
@@ -96,4 +97,29 @@ window.addEventListener("DOMContentLoaded", () => {
     ]
   };
   tabs("section.portfolio", triggerContentMatchObj, 0);
+
+  // other
+  const imagesMatchArr = [
+    {
+      name: "size-1",
+      plugSrc: "assets/img/sizes-1.png",
+      originalImg: "assets/img/sizes-1-1.png"
+    },
+    {
+      name: "size-2",
+      plugSrc: "assets/img/sizes-2.png",
+      originalImg: "assets/img/sizes-2-1.png"
+    },
+    {
+      name: "size-3",
+      plugSrc: "assets/img/sizes-3.png",
+      originalImg: "assets/img/sizes-3-1.png"
+    },
+    {
+      name: "size-4",
+      plugSrc: "assets/img/sizes-4.png",
+      originalImg: "assets/img/sizes-4-1.png"
+    },
+  ]
+  changeImageOnHover("section.sizes .sizes-wrapper", imagesMatchArr);
 })
