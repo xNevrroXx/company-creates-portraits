@@ -1,4 +1,4 @@
-function validate(formSelector) {
+function validate(formSelector, promocodeStr) {
   // validate this fields only. PSEUDO_CODE: {
   //   fileInputNames: ["upload"],
   //   inputNames: ["name", "email", "phone", "message"],
@@ -40,7 +40,7 @@ function validate(formSelector) {
         }
         break;
       case "promocode":
-        if(inputEl.value && inputEl.value !== "IWANTPOPART") {
+        if(inputEl.value && inputEl.value !== promocodeStr) {
           errors.promocode = "Такого промокода нет";
         }
         break;
@@ -61,7 +61,7 @@ function validate(formSelector) {
         }
         break;
       case "options":
-        // необязательно поле для ввода
+        // необязательное поле для ввода
         break;
       default:
         throw new Error(`Something went wrong. Select name ${selectEl.name}`);

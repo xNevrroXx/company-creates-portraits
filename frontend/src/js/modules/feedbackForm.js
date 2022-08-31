@@ -2,7 +2,7 @@ import maskPhone from "./maskPhone";
 import {activateModal} from "./modals";
 import validate from "./validate";
 
-function feedbackFormInit(formSelector, url, additionalFunctionOnSend = () => {}) {
+function feedbackFormInit(formSelector, url, additionalFunctionOnSend = () => {}, promocodeStr) {
   const formEl = document.querySelector(formSelector);
 
   if(formEl.querySelector(`input[name="phone"]`)) {
@@ -17,7 +17,7 @@ function feedbackFormInit(formSelector, url, additionalFunctionOnSend = () => {}
       console.log(name, value)
     }
 
-    const errors = validate(formSelector);
+    const errors = validate(formSelector, promocodeStr);
     if(errors) {
       // todo show errors of validation to user
       console.log(errors);

@@ -3,7 +3,6 @@ function calcCostPortrait(formSelector, promocodeStr) {
   let sizeIsSelectedFlag = false,
     materialIsSelectedFlag = false;
 
-  console.log(document.querySelector(formSelector))
   const formEl = document.querySelector(formSelector);
   const
     sizeEl = formEl.querySelector(`select[name="size"]`),

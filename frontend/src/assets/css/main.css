@@ -638,12 +638,18 @@ h4 {
 }
 .portfolio-wrapper {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }
 .portfolio-block {
+  display: none;
   width: 20%;
   padding: 0.5rem;
 }
+.portfolio-block.active {
+  display: block;
+}
+
 .portfolio-block img {
   max-width: 100%;
 }
@@ -655,6 +661,9 @@ h4 {
   font-size: 3rem;
   display: none;
   margin: 15rem 0;
+}
+.portfolio-no.active {
+  display: block;
 }
 .gift {
   background: url('../img/gift-bg.jpg') no-repeat;
