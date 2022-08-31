@@ -39,4 +39,40 @@ function activateModal(modalSelectorOrElement, activeDisplayTypeStyle = "block",
   })
 }
 
-export {activateModal, modalsInit};
+function modalOnScroll() {
+  // first function
+  let wasOpenedModalFlag = false;
+  document.addEventListener("click", toggleFlag);
+  function toggleFlag() {
+    wasOpenedModalFlag = true;
+    document.removeEventListener("click", toggleFlag);
+  }
+  document.addEventListener("scroll", openOnScrollDown)
+  function openOnScrollDown() {
+    if(wasOpenedModalFlag) {
+      document.removeEventListener("scroll", openOnScrollDown);
+      return;
+    }
+
+    const scrollHeight = Math.max(
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
+    );
+    const clientHeight = Math.min(
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
+    )
+
+    if(scrollHeight === window.scrollY + clientHeight) {
+      activateModal(".popup-gift", "block", () => {
+        wasOpenedModalFlag = true;
+        if(document.querySelector(".fixed-gift"))
+          document.querySelector(".fixed-gift").remove();
+      });
+    }
+  }
+}
+
+export {activateModal, modalsInit, modalOnScroll};

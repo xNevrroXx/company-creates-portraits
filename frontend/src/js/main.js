@@ -1,7 +1,7 @@
 // third-side modules
 import {tns} from "tiny-slider";
 // own modules
-import {modalsInit} from "./modules/modals";
+import {modalsInit, modalOnScroll, modalOnTime, activateModal} from "./modules/modals";
 import feedbackFormInit from "./modules/feedbackForm";
 import showMoreTypesOnClick from "./modules/showMoreTypesOnClick";
 import calcCostPortrait from "./modules/calcCostPortrait";
@@ -44,11 +44,29 @@ window.addEventListener("DOMContentLoaded", () => {
   })
 
   // modals
-  modalsInit(".button.button-order.button-design", ".popup-design");
-  modalsInit(".button.button-order.button-consultation", ".popup-consultation");
+  let isOpenModalFlag = false;
+  modalsInit(".button.button-order.button-design", ".popup-design", "block", () => {
+    isOpenModalFlag = true;
+  }, () => {
+    isOpenModalFlag = false;
+  });
+  modalsInit(".button.button-order.button-consultation", ".popup-consultation", "block", () => {
+    isOpenModalFlag = true;
+  }, () => {
+    isOpenModalFlag = false;
+  });
   modalsInit(".fixed-gift", ".popup-gift", "block", () => {
+    isOpenModalFlag = true;
     document.querySelector(".fixed-gift").remove();
+  }, () => {
+    isOpenModalFlag = false;
   })
+  // activate modal on time or on some event
+  modalOnScroll(isOpenModalFlag);
+  setTimeout(() => {
+    if(!isOpenModalFlag)
+      activateModal(".popup-consultation");
+  }, 1000*20*1)
 
   // init calc area
   calcCostPortrait("section.calc form", promocodeStr);
