@@ -60,7 +60,7 @@ h4 {
   font-family: 'Circe Extra Bold', sans-serif;
 }
 .p15 {
-  font-size: 1.5;
+  font-size: 1.5rem;
 }
 .p-heading {
   font-size: 2.2rem;
@@ -194,6 +194,9 @@ h4 {
   padding: 0;
   margin: 0;
   width: 20rem;
+}
+.header .burger-menu.active {
+  display: block;
 }
 .header .burger-menu li {
   padding: 2rem;
@@ -1603,7 +1606,7 @@ h4 {
     font-size: 1.5rem;
   }
   .main-features {
-    max-width: auto;
+    /*max-width: auto;*/
     margin-left: 20%;
   }
   .main-slider-btn {

@@ -7,12 +7,15 @@ import showMoreTypesOnClick from "./modules/showMoreTypesOnClick";
 import calcCostPortrait from "./modules/calcCostPortrait";
 import tabs from "./modules/tabs";
 import changeImageOnHover from "./modules/changeImageOnHover";
+import initBurger from "./modules/initBurger";
 
 const serverUrl = "http://localhost:9999";
 const feedbacksUrl = `${serverUrl}/feedbacks`;
 const promocodeStr = "IWANTPOPART";
 
 window.addEventListener("DOMContentLoaded", () => {
+  initBurger();
+
   // slider
   const mainSlider = tns({
     container: "main.main div.main-slider",
