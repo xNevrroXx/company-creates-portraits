@@ -44,6 +44,12 @@ function validate(formSelector, promocodeStr) {
           errors.promocode = "Такого промокода нет";
         }
         break;
+      case "message":
+        if(inputEl.value !== 0
+          && /^[а-яё\d \-;,.@'")(]{0,300}$/gim.test(inputEl.value.trim()) === false) {
+          errors.message = "Менее 300 русских символов, а также -;,.@'\")(";
+        }
+        break;
       default:
         throw new Error(`Something went wrong. Input name ${inputEl.name}`);
       }
